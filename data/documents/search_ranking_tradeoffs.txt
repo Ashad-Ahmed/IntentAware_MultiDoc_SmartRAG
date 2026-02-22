@@ -1,0 +1,45 @@
+Modern information retrieval systems must resolve inherent tensions between precision, recall, 
+latency, and computational cost. Precision prioritizes relevance purity, whereas recall seeks 
+completeness. Excessive focus on one metric typically degrades the other, forcing tradeoffs.
+
+Lexical retrieval models operate on token statistics. Algorithms such as BM25 estimate relevance 
+based on term frequency, inverse document frequency, and document length normalization. These 
+methods remain highly effective for keyword-oriented queries, structured identifiers, and 
+domain-specific vocabulary.
+
+However, lexical matching struggles with paraphrasing. Semantically equivalent phrases lacking 
+shared tokens may receive low scores despite high conceptual similarity. This limitation motivated 
+the adoption of dense retrieval methods based on learned embeddings.
+
+Dense retrieval encodes text into high-dimensional vectors capturing semantic relationships. 
+Similarity comparisons via cosine distance or inner product allow retrieval based on meaning 
+rather than exact wording. While embeddings improve robustness to phrasing variation, they 
+introduce distinct failure modes.
+
+Rare tokens, numeric values, product codes, and technical identifiers often produce unreliable 
+embedding behavior. Vector similarity may prioritize conceptual proximity while ignoring critical 
+lexical constraints. Consequently, vector-only retrieval may omit exact-match results essential 
+for certain queries.
+
+Hybrid retrieval strategies combine lexical and semantic signals. Rank fusion techniques aggregate 
+candidate lists from multiple retrieval models, leveraging complementary strengths. Reciprocal Rank 
+Fusion is particularly popular due to its stability and independence from score calibration.
+
+Reranking layers further refine candidate ordering. Cross-encoder architectures jointly encode 
+queries and passages, modeling fine-grained interactions. Although computationally expensive, 
+rerankers significantly improve relevance precision.
+
+Ranking pipelines must also consider redundancy effects. Highly similar passages may dominate top 
+positions, reducing informational diversity. Deduplication and diversity heuristics mitigate 
+context repetition and improve answer completeness.
+
+System designers additionally account for latency budgets. Dense retrieval and reranking operations 
+carry inference costs that scale with candidate pool size. Efficient pipelines balance recall with 
+computational feasibility.
+
+Evaluation of ranking systems requires rigorous measurement. Precision@K, Recall@K, normalized 
+discounted cumulative gain, and mean reciprocal rank are commonly used metrics. Offline evaluation 
+datasets approximate production behavior but rarely capture full query diversity.
+
+Ultimately, ranking quality depends not only on retrieval models but also on query interpretation, 
+corpus characteristics, user intent, and domain semantics.

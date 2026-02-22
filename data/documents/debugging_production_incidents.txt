@@ -1,0 +1,30 @@
+Production debugging differs fundamentally from local debugging due to nondeterminism, scale, 
+and environmental variability. Observed failures may arise from interactions absent in testing 
+environments.
+
+Effective debugging workflows emphasize hypothesis-driven investigation. Engineers formulate 
+candidate explanations, gather evidence, and iteratively refine assumptions. Random trial-and-error 
+approaches rarely succeed in complex systems.
+
+Telemetry quality strongly influences diagnostic accuracy. Logs capture discrete events, metrics 
+capture quantitative trends, and traces capture causal request flows. Missing telemetry obscures 
+failure mechanisms.
+
+Correlation pitfalls frequently mislead investigations. Co-occurring events may share temporal 
+alignment without causal relationships. Statistical coincidence is not sufficient evidence of 
+root cause.
+
+Rollback strategies provide rapid mitigation but offer limited explanatory value. Reverting changes 
+stabilizes systems yet does not identify underlying defects or systemic weaknesses.
+
+Reproduction challenges complicate incident analysis. Rare race conditions, timing dependencies, 
+and load-sensitive failures may resist deterministic recreation.
+
+Isolation techniques attempt to constrain variable interactions. Controlled experiments, feature 
+flags, staged rollouts, and fault injection assist in narrowing causal factors.
+
+Cognitive biases also influence debugging outcomes. Confirmation bias, anchoring, and premature 
+conclusions may distort reasoning processes.
+
+Robust debugging practices therefore integrate observability, statistical reasoning, experimental 
+discipline, and skepticism toward intuitive explanations.

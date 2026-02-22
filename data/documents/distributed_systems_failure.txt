@@ -1,0 +1,41 @@
+Distributed systems exhibit failure characteristics fundamentally different from single-node software. 
+Components may fail independently, messages may be delayed or lost, and partial system degradation 
+is often indistinguishable from slow performance. Engineers must therefore design systems assuming 
+that failure is not exceptional but expected.
+
+One common failure scenario involves network partitions. In partitioned states, subsets of nodes 
+remain operational but lose connectivity with other members of the cluster. This leads to 
+split-brain conditions, conflicting writes, and inconsistent system views. Strong consistency 
+protocols such as quorum-based replication attempt to constrain divergence but frequently trade 
+availability for safety.
+
+Timeout configuration represents a subtle but critical design parameter. Aggressive timeouts 
+may incorrectly classify slow nodes as failed, triggering unnecessary failovers. Conversely, 
+lenient timeouts delay recovery actions and prolong degraded performance. Optimal thresholds 
+depend heavily on workload variability and network behavior.
+
+Retry amplification constitutes another systemic risk. When clients or intermediate services 
+blindly retry failed operations, traffic load can increase dramatically. This phenomenon, often 
+called a retry storm, exacerbates failures rather than mitigating them. Backoff algorithms, 
+randomized jitter, and retry budgets are widely used safeguards.
+
+Failure detection mechanisms rely on indirect signals. Heartbeats, gossip protocols, and lease-based 
+approaches attempt to infer node health, yet transient congestion or scheduling delays can produce 
+false positives. Distinguishing between failure and slowness remains an unsolved challenge in 
+large-scale distributed computing.
+
+Recovery workflows must also account for cascading dependencies. Restarting a failed component may 
+not restore functionality if upstream services remain overloaded. Progressive recovery strategies 
+often sequence restoration actions to avoid destabilizing already fragile subsystems.
+
+Consistency anomalies frequently emerge during recovery. Replicas rejoining the cluster may contain 
+stale state, requiring reconciliation or anti-entropy synchronization. Conflict resolution strategies 
+range from last-write-wins policies to application-level merge logic.
+
+Engineers also confront gray failures, where components behave incorrectly without outright crashing. 
+Examples include degraded disks, throttled CPUs, or intermittent packet loss. Gray failures are 
+particularly dangerous because traditional monitoring signals may not immediately capture them.
+
+Large distributed systems therefore emphasize resilience patterns: redundancy, replication, 
+fault isolation, circuit breakers, load shedding, and graceful degradation. No single mechanism 
+prevents failure; stability emerges from layered defenses.

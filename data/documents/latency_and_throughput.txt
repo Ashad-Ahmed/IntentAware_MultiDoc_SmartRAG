@@ -1,0 +1,36 @@
+Latency and throughput jointly characterize system performance but often behave antagonistically. 
+Latency measures response delay for individual operations, whereas throughput measures aggregate 
+processing capacity. Optimizing one metric may degrade the other.
+
+Queueing dynamics frequently dominate latency behavior under load. As utilization approaches 
+capacity, waiting times increase nonlinearly. Even modest bursts can produce disproportionately 
+large tail latency effects.
+
+Tail latency, representing high-percentile response delays, significantly impacts user experience. 
+Distributed systems amplify tail effects because end-to-end latency depends on the slowest 
+component among many interacting services.
+
+Resource contention contributes heavily to latency variability. CPU scheduling delays, lock 
+contention, memory pressure, garbage collection pauses, and I/O stalls introduce jitter and 
+performance instability.
+
+Horizontal scaling strategies aim to improve throughput by distributing workloads. However, 
+scaling introduces coordination overhead, including network communication, synchronization, 
+replication traffic, and load balancing complexity.
+
+Caching mechanisms often reduce latency by avoiding repeated computation or remote calls. Yet 
+cache design introduces tradeoffs related to consistency, eviction policies, memory usage, and 
+invalidation strategies.
+
+Batching operations may improve throughput by amortizing overhead, but increased batch size 
+raises per-request latency. Determining optimal batching parameters requires workload-specific 
+analysis.
+
+Concurrency controls influence both metrics. Excessive parallelism increases contention and 
+context switching, while insufficient parallelism underutilizes resources.
+
+Performance tuning typically involves iterative experimentation. Bottleneck identification, 
+instrumentation, controlled load testing, and regression analysis guide optimization decisions.
+
+System architects therefore treat performance as a multi-dimensional constraint problem rather 
+than a single-objective optimization exercise.
