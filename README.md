@@ -2,6 +2,8 @@
 
 A production-ready Retrieval Augmented Generation (RAG) system that processes multiple documents (TXT, PDF, DOCX) and answers queries using intelligent retrieval and ranking.
 
+![FastAPI Home Screen](https://github.com/Ashad-Ahmed/IntentAware_MultiDoc_SmartRAG/blob/main/DemoScreenShots_IntentAwareRAG/HomeScreen.png?raw=true)
+
 ## Features
 
 ### Core Intelligence
@@ -290,8 +292,7 @@ ACCURACY: Highest relevant chunks appear first
 curl -X POST "http://localhost:8000/upload" \
   -F "file=@document.pdf"
 ```
-
-**Response:**
+**Sample Response:**
 ```json
 {
   "status": "success",
@@ -303,12 +304,16 @@ curl -X POST "http://localhost:8000/upload" \
 }
 ```
 
+![Upload Doc](https://github.com/Ashad-Ahmed/IntentAware_MultiDoc_SmartRAG/blob/main/DemoScreenShots_IntentAwareRAG/Upload%20Files.png?raw=true)
+
+![Upload Confirmation](https://github.com/Ashad-Ahmed/IntentAware_MultiDoc_SmartRAG/blob/main/DemoScreenShots_IntentAwareRAG/Uploaded%20Files%20Confirmation.png?raw=true)
+
 ### 2. Query Documents
 ```bash
 curl -X POST "http://localhost:8000/query?query_text=How%20does%20caching%20improve%20performance"
 ```
 
-**Response:**
+**Sample Response:**
 ```json
 {
   "status": "success",
@@ -319,6 +324,10 @@ curl -X POST "http://localhost:8000/query?query_text=How%20does%20caching%20impr
   "response_time_ms": 245.3
 }
 ```
+
+![Query](https://github.com/Ashad-Ahmed/IntentAware_MultiDoc_SmartRAG/blob/main/DemoScreenShots_IntentAwareRAG/Query.png?raw=true)
+
+![Query Response](https://github.com/Ashad-Ahmed/IntentAware_MultiDoc_SmartRAG/blob/main/DemoScreenShots_IntentAwareRAG/Query%20Results.png?raw=true)
 
 ### 3. List Documents
 ```bash
@@ -344,10 +353,14 @@ curl "http://localhost:8000/documents"
 }
 ```
 
+![List Documents](https://github.com/Ashad-Ahmed/IntentAware_MultiDoc_SmartRAG/blob/main/DemoScreenShots_IntentAwareRAG/List%20Documents.png?raw=true)
+
 ### 4. Delete Document
 ```bash
 curl -X DELETE "http://localhost:8000/documents/1"
 ```
+
+![Delete Doc](https://github.com/Ashad-Ahmed/IntentAware_MultiDoc_SmartRAG/blob/main/DemoScreenShots_IntentAwareRAG/DeleteDoc.png?raw=true)
 
 ### 5. View Statistics
 ```bash
@@ -373,10 +386,14 @@ curl "http://localhost:8000/stats"
 }
 ```
 
+![Stats](https://github.com/Ashad-Ahmed/IntentAware_MultiDoc_SmartRAG/blob/main/DemoScreenShots_IntentAwareRAG/Stats.png?raw=true)
+
 ### 6. Health Check
 ```bash
 curl "http://localhost:8000/health"
 ```
+
+![Health Check](https://github.com/Ashad-Ahmed/IntentAware_MultiDoc_SmartRAG/blob/main/DemoScreenShots_IntentAwareRAG/Health%20Check.png?raw=true)
 
 ## Interactive API Documentation
 
@@ -582,3 +599,4 @@ For issues and feature requests: Create an issue or contact support.
 
 **Last Updated**: February 2024
 **Version**: 2.0.0
+
